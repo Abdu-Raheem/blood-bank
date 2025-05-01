@@ -148,7 +148,7 @@ Admins should configure the mobile app with these base URLs:
 ## 🚨 Emergency Contact
 
 For system issues, contact:  
-[Blood Bank Admin](mailto:bloodbank@coet.edu)  
+[Blood Bank Admin](mailto:sample@gmail.com)  
 COET Helpdesk: +91-XXXXXXXXXX
 
 ---
