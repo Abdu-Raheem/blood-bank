@@ -27,7 +27,7 @@ A modern blood bank management system for College Of Engineering Thalassery, fea
 ### Installation
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/blood-bank.git
+git clone [https://github.com/yourusername/blood-bank.git](https://github.com/Abdu-Raheem/blood-bank.git)
 cd blood-bank
 
 # Setup virtual environment
