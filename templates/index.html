@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=500, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>STUDENT REGISTRATION</title>
+    {% load static %}
+<link rel="icon" href="{% static 'images/icon.png' %}" type="image">
+</head>
+<body style="background-image: url('{% static 'images/coet.jpeg' %}');">
+  <script>
+    function myFunction() {
+      var popup = document.getElementById("myPopup");
+      popup.classList.toggle("show");
+    }
+  </script>
+  {% if messages %}
+    {% for message in messages  %}            
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" style="text-align: center; width: fit-content; margin: auto;" role="alert">
+            <strong>Message : </strong> {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endfor %}
+  {% endif %} 
+<div class="formbold-main-wrapper">
+  <div class="formbold-form-wrapper">
+      <div class="formbold-form-title">
+        <h2 class="" style="text-align:center">Join now</h2>
+        <p style="text-align:center">
+          The gift of Blood is a gift to someone's life
+        </p>
+      </div>
+    <form action='{% url 'add-student' %}' method="POST" id="registerForm">
+      {% csrf_token %}
+      <div class="formbold-input-flex">
+        <div>
+          <label for="register_no" class="formbold-form-label">
+            Register No
+          </label>
+          <input
+            type="text"
+            name="register_no"
+            id="register_no"
+            class="formbold-form-input"
+            required
+          />
+        </div>
+        <div>
+          <label for="student_name" class="formbold-form-label"> Name </label>
+          <input
+            type="text"
+            name="student_name"
+            id="student_name"
+            class="formbold-form-input"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="formbold-input-flex">
+        <div>
+          <label for="department" class="formbold-form-label"> Department </label>
+          <select name="department" class="formbold-form-input" style="text-align:left;" required>
+            <option value=""></option>
+            <option value="CS">CS</option>
+            <option value="EC">EC</option>
+            <option value="EE">EE</option>
+            <option value="IT">IT</option>
+            <option value="CE">CE</option>
+            <option value="ME">ME</option>
+          </select>
+        </div>
+        <div>
+          <label for="phone_no" class="formbold-form-label"> Phone number </label>
+          <input
+            type="text"
+            name="phone_no"
+            id="phone_no"
+            class="formbold-form-input"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="formbold-input-flex">
+        <div>
+          <label for="blood_group" class="formbold-form-label"> Blood Group </label>
+          <select name="blood_group" class="formbold-form-input" style="text-align:left;" required>
+            <option value=""></option>
+            <option value="A+ve">A+ve</option>
+            <option value="A-ve">A-ve</option>
+            <option value="B+ve">B+ve</option>
+            <option value="B-ve">B-ve</option>
+            <option value="AB+ve">AB+ve</option>
+            <option value="AB-ve">AB-ve</option>
+            <option value="O+ve">O+ve</option>
+            <option value="O-ve">O-ve</option>
+          </select>
+        </div>
+        <div>
+          <label for="dob" class="formbold-form-label"> Date of birth </label>
+          <input
+            type="date" 
+            my-date-format="DD/MM/YYYY" 
+            name="dob"
+            id="dob"
+            class="formbold-form-input"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="formbold-input-flex">
+        <div>
+          <label for="last_donated_date" class="formbold-form-label"> Last donated date </label>
+          <div class="popup" onclick="myFunction()">
+            <img width="15" height="15" style="margin-left: 123px; margin-top: -71px;"
+                src="https://img.icons8.com/3d-fluency/94/info.png"          
+              alt="info"/>
+            <span class="popuptext" id="myPopup">Leave blank if you are beginner</span>
+          </div>
+          <input
+            type="date" 
+            my-date-format="DD/MM/YYYY" 
+            name="last_donated_date"
+            id="last_donated_date"
+            class="formbold-form-input"
+          />
+        </div>
+        <div>
+          <label for="place" class="formbold-form-label"> Near Hometown </label>
+          <input
+            type="text"
+            name="place"
+            id="place"
+            class="formbold-form-input"
+            required
+          />
+        </div>
+      </div>
+      <div id="container">
+        <button class="formbold-btn" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    background-repeat: no-repeat; 
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+    font-family: 'Inter', sans-serif;
+  }
+  .formbold-mb-3 {
+    margin-bottom: 15px;
+  }
+  .formbold-relative {
+    position: relative;
+  }
+  .formbold-opacity-0 {
+    opacity: 0;
+  }
+  .formbold-stroke-current {
+    stroke: currentColor;
+  }
+  #supportCheckbox:checked ~ div span {
+    opacity: 1;
+  }
+
+  .formbold-main-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+    position: relative;
+  }
+
+  .formbold-form-wrapper {
+    margin: 0 auto;
+    max-width: 570px;
+    width: 100%;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.479);
+    padding: 40px;
+    height: 650px;
+    position: relative;
+  }
+
+  .formbold-img {
+    margin-bottom: 45px;
+  }
+
+  .formbold-form-title {
+    margin-bottom: 30px;
+  }
+  .formbold-form-title h2 {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+    color: #3e3e8b;
+  }
+  .formbold-form-title p {
+    font-size: 16px;
+    line-height: 24px;
+    color: #536387;
+    margin-top: 12px;
+  }
+
+  .formbold-input-flex {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+  }
+  .formbold-input-flex > div {
+    width: 50%;
+  }
+  .formbold-form-input {
+    text-align:left;
+    width: 100%;
+    padding: 13px 22px;
+    border-radius: 5px;
+    border: 1px solid #0d0d0e;
+    background: rgba(255, 255, 255, 0.479);
+    font-weight: 500;
+    font-size: 16px;
+    color: #536387;
+    outline: none;
+    resize: none;
+  }
+  .formbold-form-input:focus {
+    border-color: #6a64f1;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+  }
+  .formbold-form-label {
+    color: #000000;
+    font-size: 14px;
+    line-height: 24px;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .formbold-checkbox-label {
+    display: flex;
+    cursor: pointer;
+    user-select: none;
+    font-size: 16px;
+    line-height: 24px;
+    color: #536387;
+  }
+  .formbold-checkbox-label a {
+    margin-left: 5px;
+    color: #6a64f1;
+  }
+  .formbold-input-checkbox {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  .formbold-checkbox-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin-right: 16px;
+    margin-top: 2px;
+    border: 0.7px solid #dde3ec;
+    border-radius: 3px;
+    text-align: center;
+  }
+
+  .formbold-btn {
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 8px 16px;
+    border: none;
+    font-weight: 500;
+    background-color: #cb1616;
+    color: white;
+    cursor: pointer;
+    width: 29%;
+  }
+  .formbold-btn:hover {
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+  }
+  .popup {
+    position: absolute;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* The actual popup */
+  .popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -18px;
+    margin-bottom: 33px;
+  }
+  
+  /* Popup arrow */
+  .popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  .popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+  #container
+  {
+    text-align: center;
+    margin-top: 8%;
+  }
+</style>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+    <script>
+      const registerNumberRegex = /^(L)?TLY\d{2}(ME|CS|CE|EE|IT|EC|CE)\d{3}$/;
+
+      document.addEventListener('DOMContentLoaded', function () {
+          const form = document.getElementById('registerForm');
+
+      form.addEventListener('submit', function (event) {
+          const registerNoInput = document.getElementById('register_no');
+          const inputText = registerNoInput.value.trim();
+          if (!registerNumberRegex.test(inputText)) {
+            alert('Invalid register number format!');
+            event.preventDefault();
+          }
+          var x = new Date($("#dob").val());  
+          var dob = new Date();   
+          if (dob.getFullYear() - x.getFullYear() < 18)   
+          {  
+            alert('You Are Not 18 Year');
+            event.preventDefault();
+          }
+        });
+      });
+    </script>
+</body>
+</html>
